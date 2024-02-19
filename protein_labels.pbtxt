@@ -1,0 +1,139 @@
+item {
+  id: 0
+  name: "Nucleoplasm"
+}
+
+item {
+  id: 1
+  name: "Nuclear membrane"
+}
+
+item {
+  id: 2
+  name: "Nucleoli"
+}
+
+item {
+  id: 3
+  name: "Nucleoli fibrillar center"
+}
+
+item {
+  id: 4
+  name: "Nuclear speckles"
+}
+
+item {
+  id: 5
+  name: "Nuclear bodies"
+}
+
+item {
+  id: 6
+  name: "Endoplasmic reticulum"
+}
+
+item {
+  id: 7
+  name: "Golgi apparatus"
+}
+
+item {
+  id: 8
+  name: "Peroxisomes"
+}
+
+item {
+  id: 9
+  name: "Endosomes"
+}
+
+item {
+  id: 10
+  name: "Lysosomes"
+}
+
+item {
+  id: 11
+  name: "Intermediate filaments"
+}
+
+item {
+  id: 12
+  name: "Actin filaments"
+}
+
+item {
+  id: 13
+  name: "Focal adhesion sites"
+}
+
+item {
+  id: 14
+  name: "Microtubules"
+}
+
+item {
+  id: 15
+  name: "Microtubules ends"
+}
+
+item {
+  id: 16
+  name: "Cytokinetic bridge"
+}
+
+item {
+  id: 17
+  name: "Mitotic spindle"
+}
+
+item {
+  id: 18
+  name: "Microtubule organizing center"
+}
+
+item {
+  id: 19
+  name: "Centrosome"
+}
+
+item {
+  id: 20
+  name: "Lipid droplets"
+}
+
+item {
+  id: 21
+  name: "Plasma membrane"
+}
+
+item {
+  id: 22
+  name: "Cell junctions"
+}
+
+item {
+  id: 23
+  name: "Mitochondria"
+}
+
+item {
+  id: 24
+  name: "Aggresome"
+}
+
+item {
+  id: 25
+  name: "Cytosol"
+}
+
+item {
+  id: 26
+  name: "Cytoplasmic bodies"
+}
+
+item {
+  id: 27
+  name: "Rods & rings"
+}
