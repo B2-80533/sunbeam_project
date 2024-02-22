@@ -4,7 +4,7 @@
     <title>Protein Prediction</title>
     <style>
         body {
-            background-image: url("static/cell.gif");
+            background-image: url('/static/cell.gif');
             background-size: cover;
             background-repeat: repeat;
             height: 100vh;
@@ -12,20 +12,140 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            color: #333;
         }
 
         h1 {
             color: white;
             font-size: 36px;
             text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            width: 55%;
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap onto the next line */
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .labels-box {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-right: 20px;
+            flex: 1;
+        }
+
+        .labels-box h2 {
+            color: white;
+            background-color: #007bff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .labels {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            color: black;
+        }
+
+        .labels li {
+            margin-bottom: 5px;
+        }
+
+        .form-container {
+            flex: 1;
+            min-width: 300px; /* Set a minimum width for the form container */
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        form input[type="file"] {
+            margin-right: 10px;
+        }
+
+        form button {
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .error {
+    color: red;
+    margin-top: 10px;
+    text-align: center; /* Center the text */
+}
+
+        #imagePreview {
+            margin-top: 20px;
+            text-align: center;
+            display: none; /* Hide the image preview initially */
+        }
+
+        #uploadedImage {
+            max-width: 300px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Predict the protein in an image</h1>
-    <form action="/" method="POST" enctype="multipart/form-data">
-        <input type="file" name="image" accept="image/*" required>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+        <div class="labels-box">
+    <h2>Predicting from the following Labels</h2>
+    <ul class="labels">
+        {% for key, value in label_names.items() %}
+        <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+        <div class="form-container">
+            <form action="/" method="POST" enctype="multipart/form-data" id="uploadForm">
+                <input type="file" name="image" accept="image/*" id="imageInput" required>
+                <button type="button" onclick="submitForm()">Submit</button>
+            </form>
+            <div id="imagePreview"></div>
+            <div id="errorMessage" class="error">{{ error_message }}</div>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            document.getElementById("errorMessage").style.display = "none";
+            document.getElementById("uploadForm").submit();
+        }
+
+        document.getElementById("imageInput").addEventListener("change", function() {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.style.maxWidth = "300px";
+                    var imagePreview = document.getElementById("imagePreview");
+                    imagePreview.innerHTML = "";
+                    imagePreview.appendChild(img);
+                    imagePreview.style.display = "block"; // Show the image preview
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>

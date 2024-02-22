@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Protein Prediction Result</title>
+    <style>
+        body {
+            background-image: url('/static/cell.gif');
+            background-size: cover;
+            background-repeat: repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        h1 {
+            color: white;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 300px; /* Reduce image size */
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .prediction {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 60px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .prediction h2 {
+            color: Black;
+            margin-bottom: 20px;
+        }
+
+        .prediction ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .prediction li {
+            margin-bottom: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Uploaded Image</h1>
+    <img src="{{ url_for('static', filename=image) }}" alt="Uploaded Image">
+    <div class="prediction">
+        <h2>Prediction Result</h2>
+        <ul>
+            {% for protein, probability in top_3_proteins %}
+            <li>{{ protein }}: {{ probability }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
